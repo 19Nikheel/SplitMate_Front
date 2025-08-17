@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+@theme {
+  --font-family-display: "Open Sans", sans-serif;
+  --font-family-body: "Open Sans", sans-serif;
+
+  --font-size-14: 14px;
+
+  --color-main-bg: #fafbfb;
+  --color-main-dark-bg: #20232a;
+  --color-secondary-dark-bg: #33373e;
+  --color-light-gray: #f7f7f7;
+  --color-half-transparent: rgba(0, 0, 0, 0.5);
+
+  --border-width-1: 1px;
+  --border-color-color: rgba(0, 0, 0, 0.1);
+
+  --width-400: 400px;
+  --width-760: 760px;
+  --width-780: 780px;
+  --width-800: 800px;
+  --width-1000: 1000px;
+  --width-1200: 1200px;
+  --width-1400: 1400px;
+
+  --height-80: 80px;
+
+  --min-height-590: 590px;
+
+  --background-image-hero-pattern: url("https://i.ibb.co/MkvLDfb/Rectangle-4389.png");
+}
