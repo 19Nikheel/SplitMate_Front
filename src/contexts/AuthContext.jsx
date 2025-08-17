@@ -44,11 +44,14 @@ export const AuthProvider = ({ children }) => {
         }
 
         try {
-          const response = await fetch("http://localhost:8080/check", {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
+          const response = await fetch(
+            "https://splitmate-2rbe.onrender.com/check",
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
 
           if (response.status != 200) {
             localStorage.removeItem("accessToken");
