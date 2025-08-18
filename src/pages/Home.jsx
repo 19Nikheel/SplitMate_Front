@@ -7,7 +7,7 @@ import { useAlert } from "../contexts/AlertContext.jsx";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { role } = useUser();
+  const { role, setRole } = useUser();
   const { showAlert } = useAlert();
 
   const [showCreateGroup, setShowCreateGroup] = useState(false);
@@ -77,6 +77,7 @@ export default function Home() {
       });
       if (res.status === 200) {
         alert("Member created successfully");
+        setRole("MEMBER");
         setPhone("");
         setNewPass("");
         setConfirmPass("");
