@@ -32,14 +32,32 @@ const Signup = () => {
   const { showAlert } = useAlert();
   const { currentColor } = useStateContext();
   const [state, dispatch] = useReducer(reducer, initial);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const HandleOnChange = (field) => (event) => {
-    dispatch({ type: "update", field, value: event.target.value });
+    if (field === "phone") {
+      value = value.replace(/\D/g, "").slice(0, 10);
+    }
+    {
+      dispatch({ type: "update", field, value: event.target.value });
+    }
   };
 
   const HandleOnsubmit = async () => {
     const { val, pass, phone } = state;
     if (val && pass && phone) {
+      if (phone.length !== 10) {
+        showAlert("Phone number must be exactly 10 digits.", "danger");
+        return;
+      }
+
+      if (isSubmitting) {
+        showAlert("Please wait before trying again.", "warning");
+        return;
+      }
+
+      setIsSubmitting(true);
+
       const result = await signup(val, pass, phone);
       if (result.status === 200) {
         showAlert("User ID :." + result.data, "info");
@@ -51,6 +69,10 @@ const Signup = () => {
         showAlert("Invalid credentials, please try again.", "danger");
       }
       dispatch({ type: "submit" });
+
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 4000);
     }
   };
 

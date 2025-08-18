@@ -44,14 +44,7 @@ export const AuthProvider = ({ children }) => {
         }
 
         try {
-          const response = await fetch(
-            "https://splitmate-2rbe.onrender.com/check",
-            {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }
-          );
+          const response = await axiosInstance.get("/check");
 
           if (response.status != 200) {
             localStorage.removeItem("accessToken");
