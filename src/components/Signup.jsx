@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { Input } from "./Input.jsx";
 import Button from "./Button.jsx";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
@@ -35,6 +35,7 @@ const Signup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const HandleOnChange = (field) => (event) => {
+    let value = event.target.value;
     if (field === "phone") {
       value = value.replace(/\D/g, "").slice(0, 10);
     }
