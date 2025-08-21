@@ -6,7 +6,7 @@ const Authpage = ({ children }) => {
   const { currentColor } = useStateContext();
   const location = useLocation();
 
-  const currentPath = location.hash.replace(/^#/, "");
+  const currentPath = window.location.hash.replace(/^#/, "");
 
   const buttons = [
     { path: "/login", name: "Login" },
