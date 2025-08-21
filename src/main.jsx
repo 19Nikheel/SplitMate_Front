@@ -5,13 +5,13 @@ import App from "./App.jsx";
 import { ContextProvider } from "./contexts/ContextProvider.jsx";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/UserProvider.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <ContextProvider>
         <AlertProvider>
           <UserProvider>
@@ -21,6 +21,6 @@ createRoot(document.getElementById("root")).render(
           </UserProvider>
         </AlertProvider>
       </ContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
