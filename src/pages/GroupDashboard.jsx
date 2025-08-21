@@ -92,8 +92,10 @@ const GroupDashboard = () => {
               {array.slice(0, num).map((log) => (
                 <tr
                   key={log.id}
-                  className={`border-b cursor-pointer hover:bg-gray-100 ${
-                    log.isDeleted ? "bg-red-100" : ""
+                  className={`border-b cursor-pointer ${
+                    log.isDeleted
+                      ? "bg-red-100 hover:bg-red-200"
+                      : "hover:bg-gray-100"
                   }`}
                   onClick={async () => {
                     try {
@@ -189,6 +191,7 @@ const GroupDashboard = () => {
               ))}
             </div>
           </div>
+          {!selectedLog.isDeleted} &&{" "}
           <button className="" onClick={() => handleLogdel(selectedLog.id)}>
             <Trash2 size={20} />
           </button>
