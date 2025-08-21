@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      if (!arr.includes(location.hash.replace("/^#/", ""))) {
+      if (!arr.includes(location.hash.replace(/^#/, ""))) {
         if (!accessToken) {
           navigate("/login");
           setLoading(false);
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkAuth();
-  }, [navigate, location.hash.replace("/^#/", "")]);
+  }, [navigate, location.hash.replace(/^#/, "")]);
 
   const login = async (userName, password) => {
     try {
