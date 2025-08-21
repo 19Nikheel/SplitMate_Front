@@ -93,7 +93,7 @@ const GroupDashboard = () => {
                 <tr
                   key={log.id}
                   className={`border-b cursor-pointer ${
-                    log.isDeleted
+                    log.deleted
                       ? "bg-red-100 hover:bg-red-200"
                       : "hover:bg-gray-100"
                   }`}
@@ -102,8 +102,12 @@ const GroupDashboard = () => {
                       const res = await axiosInstance.get(
                         `/findsinglelog/${log.id}`
                       );
-                      //console.log(res.data);
-                      setSelectedLog(res.data); // assuming it returns the full JSON structure
+                      const modifiedData = {
+                        ...res.data,
+                        deleted: log.deleted, // your extra variable
+                      };
+
+                      setSelectedLog(modifiedData);
                     } catch (err) {
                       showAlert("Failed to load log details", "danger");
                     }
@@ -191,10 +195,12 @@ const GroupDashboard = () => {
               ))}
             </div>
           </div>
-          {!selectedLog.isDeleted} &&{" "}
-          <button className="" onClick={() => handleLogdel(selectedLog.id)}>
-            <Trash2 size={20} />
-          </button>
+
+          {!selectedLog.deleted && (
+            <button className="" onClick={() => handleLogdel(selectedLog.id)}>
+              <Trash2 size={20} />
+            </button>
+          )}
         </Modal>
       )}
     </div>
